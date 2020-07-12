@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tour Guide Registration portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<style type="text/css">
+.navbar {
+	background-color: #03a9f4;
+}
+
+.alert {
+	display: none;
+}
+</style>
+<script src="https:////code.jquery.com/jquery-1.10.2.min.js"></script>
+<script
+	src="https:////maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body style="">
+	<div >
+        {% for message in messages %}
+        <h1> {{message}}  </h1>
+        {% endfor %}
+    </div>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand"
+					style="color: #fff; font-size: 25px; font-weight: bold;">Tour Guide Registration portal</a>			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav pull-right">
+					<li><a href="registration">Register</a></li>
+					<li><a href="login">Login</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<div class="container">
+		
+	<form id="uploadform" class="form-horizontal"
+		action="registration" method="post" style="margin-top: 20px;">
+		{% csrf_token %}
+		<h3>User Registration</h3>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="file">First Name</label>
+			<div class="col-md-4">
+				<input id="firstName" name="firstName" type="text" placeholder="Enter your First name"
+					required="required" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="file">Last Name</label>
+			<div class="col-md-4">
+				<input id="lastName" name="lastName" type="text" required="required" placeholder="Enter your Last name"
+					class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="file">Email
+				Address</label>
+			<div class="col-md-4">
+				<input id="emailAddress" name="emailAddress" type="text" placeholder="Enter your active email id "
+					required="required" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="file">Password</label>
+			<div class="col-md-4">
+				<input id="password" name="password1" type="password"
+					required="required" class="form-control input-md">
+			</div>
+		</div>
+		<div>
+		<div class="form-group">
+				<label class="col-md-4 control-label" for="file"> Confirm Password</label>
+				<div class="col-md-4">
+					<input id="password" name="password2" type="password"
+						required="required" class="form-control input-md">
+			</div>
+		</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="mobile">Mobile
+				Number</label>
+			<div class="col-md-4">
+				<input id="mobile" name="mobile" type="text" placeholder="Where we can contact You"
+					required="required" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="submit"></label>
+			<div class="col-md-4">
+				<button id="submit" name="submit" class="btn btn-primary btn-block">Register</button>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="submit"></label>
+		</div>
+	</form>
+	</div>
+	<script>
+		$("#uploadform").submit(function() {
+			$("#submit").text("UPLOADING");
+			$("#submit").attr("disabled", true);
+			return true;
+		});
+
+		function showHideResume(obj) {
+			if ($(obj).val() == "user") {
+				$("#filediv").show();
+				$("#companydiv").hide();
+				$("#companydiv").val("");
+			} else {
+				$("#companydiv").show();
+				$("#filediv").hide();
+				$("#file").val("");
+			}
+		}
+	</script>
+</body>
+</html>

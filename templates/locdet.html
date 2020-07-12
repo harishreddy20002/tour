@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>details</title>
+    <h1>Your Trip Details are as Follows:</h1>
+</head>
+<body>
+    <h2>The places that you have opted to visit are</h2>
+	{% for l in loc %}
+   <h3><li>{{l}}</li></h3> 
+    {% empty %}
+    <h1 style="background-color:tomato;">Invalid Entry Retry</h1>
+
+{% endfor %}<br>
+	 <iframe src="https://www.linkedin.com/in/saiyeduguri/" style="height:200px;width:300px" title="Iframe Example"></iframe> 
+</body>
+</html>

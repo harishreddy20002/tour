@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tour Guide</title>
+<link rel="shortcut icon" href="/img/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<style type="text/css">
+.navbar {
+	background-color: #03a9f4;
+}
+
+.alert {
+	display: none;
+}
+</style>
+<script src="https:////code.jquery.com/jquery-1.10.2.min.js"></script>
+<script
+	src="https:////maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body style=" ">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand"
+					style="color: #fff; font-size: 25px; font-weight: bold;">Tour Guide</a>			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav pull-right">
+					<li><a href="registration">Register</a></li>
+					<li><a href="login">Login</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<div >
+		{% for message in messages %}
+		<h1> {{message}}  </h1>
+		{% endfor %}
+	</div>
+	
+	<div class="container content-div">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3>User Log In</h3>
+				</div>
+				<div class="modal-body">
+					<form action="login" method="post">
+						{% csrf_token %}
+						<div class="form-group">
+							<input type="email" class="form-control input-md"
+								placeholder="Username" name="emailAddress" id="emailAddress" />
+						</div>
+
+						<div class="form-group">
+							<input type="password" class="form-control input-md"
+								placeholder="Password" id="password" name="password" />
+						</div>
+						
+						<div class="form-group">
+							<input type="submit"
+								class="btn btn-block btn-md btn-primary main_menu_bg" value="Login" />
+								<div class="col-md-4">
+				<span id="submit" name="submit" class="pull-right">New User? <a href="registration">Click Here</a></span>
+			</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">LogIn</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-danger">
+							<strong>Invalid Credentials!</strong> Please enter valid details
+							to login.
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary main_menu_bg"
+							data-dismiss="modal">Close</button>
+						<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+	</script>
+</body>
+</html>

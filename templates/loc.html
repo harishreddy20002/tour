@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>locations</title>
+    <table>
+      
+      </table>
+</head>
+<body>
+ 
+  
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>City/Location</th>
+    <th>Speciality</th>
+    <th>Rating</th>
+    <th>PINCode</th>
+  </tr>
+    
+{% for l in list %}
+<tr>
+<td>{{l.id}}</td>
+<td>{{l.name}}</td>
+<td>{{l.activity}}</td>
+<td>{{l.rating}}</td>
+<td>{{l.pincode}}</td>
+
+</tr>
+{% endfor %}<br>
+</table>
+
+					
+				<style>
+					table {
+					  font-family: arial, sans-serif;
+					  border-collapse: collapse;
+					  width: 100%;
+					}
+					
+					td, th {
+					  border: 1px solid #dddddd;
+					  text-align: left;
+					  padding: 8px;
+					}
+					
+					tr:nth-child(even) {
+					  background-color: #dddddd;
+					}
+					</style>
+					
+<form action="locdet" method="POST">
+  {% csrf_token%}
+  Enter the starting Point ID:<input type="text" name=start ><br>
+  Enter the ending Point ID:<input type="text" name=end ><br>
+  <h3>Select the places that you want to visit based on the details provided above</h3>
+  {% for l in list %}
+	<div class="form-check">
+	  <input class="form-check-input" type="checkbox" value={{l.name}} id={{l.name}} name="btw">
+	  <label class="form-check-label" for="place">{{l.name}}
+		{% empty %}
+		<h1 style="background-color:tomato;">Invalid Entry Retry</h1>
+	  {% endfor %}
+	</div>
+	<button style="background-color:green;" id="submit" name="locdet" ><h2>Get Details</h2></button><br>
+</form>		
+</body>
+</html>
